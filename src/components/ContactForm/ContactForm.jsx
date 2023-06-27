@@ -9,8 +9,8 @@ class ContactForm extends Component {
     number: '',
   };
 
-  nameId = nanoid();
-  numberId = nanoid();
+  nameId = nanoid(8);
+  numberId = nanoid(8);
 
   handelChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -24,38 +24,37 @@ class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
+
     return (
-      <>
-        <Form onSubmit={this.handelSubmit}>
-          <Label htmlFor={this.nameId}>Name</Label>
-          <div>
-            <Input
-              type="text"
-              name="name"
-              id={this.nameId}
-              value={name}
-              onChange={this.handelChange}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </div>
-          <Label htmlFor={this.numberId}>Number</Label>
-          <div>
-            <Input
-              type="tel"
-              name="number"
-              id={this.numberId}
-              value={number}
-              onChange={this.handelChange}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </div>
-          <Btn type="submit">Add contact</Btn>
-        </Form>
-      </>
+      <Form onSubmit={this.handelSubmit}>
+
+        <Label htmlFor={this.nameId}>Name</Label>
+        <Input
+          type="text"
+          name="name"
+          id={this.nameId}
+          value={name}
+          onChange={this.handelChange}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+
+        <Label htmlFor={this.numberId}>Number</Label>
+        <Input
+          type="tel"
+          name="number"
+          id={this.numberId}
+          value={number}
+          onChange={this.handelChange}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+
+        <Btn type="submit">Add contact</Btn>
+
+      </Form>
     );
   }
 }

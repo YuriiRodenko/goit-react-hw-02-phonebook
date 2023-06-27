@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: block;
-  alight-item: center;
   margin-top: 10px;
   padding: 10px;
   margin-left: auto;
